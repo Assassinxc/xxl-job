@@ -1,0 +1,1 @@
+alter table xxl_job_registry add column start_time datetime DEFAULT NULL;

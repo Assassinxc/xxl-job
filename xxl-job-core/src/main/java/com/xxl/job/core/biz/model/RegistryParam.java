@@ -1,6 +1,7 @@
 package com.xxl.job.core.biz.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by xuxueli on 2017-05-10 20:22:42
@@ -12,11 +13,21 @@ public class RegistryParam implements Serializable {
     private String registryKey;
     private String registryValue;
 
+    private Date startTime;
+
     public RegistryParam(){}
     public RegistryParam(String registryGroup, String registryKey, String registryValue) {
         this.registryGroup = registryGroup;
         this.registryKey = registryKey;
         this.registryValue = registryValue;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     public String getRegistryGroup() {

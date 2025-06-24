@@ -6,6 +6,7 @@ import com.xxl.job.core.biz.model.RegistryParam;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.util.XxlJobRemotingUtil;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,12 +30,13 @@ public class AdminBizClient implements AdminBiz {
         if (!(this.timeout >=1 && this.timeout <= 10)) {
             this.timeout = 3;
         }
+        this.startTime = new Date();
     }
 
     private String addressUrl ;
     private String accessToken;
     private int timeout;
-
+    private Date startTime;
 
     @Override
     public ReturnT<String> callback(List<HandleCallbackParam> callbackParamList) {
@@ -43,6 +45,7 @@ public class AdminBizClient implements AdminBiz {
 
     @Override
     public ReturnT<String> registry(RegistryParam registryParam) {
+        registryParam.setStartTime(startTime);
         return XxlJobRemotingUtil.postBody(addressUrl + "api/registry", accessToken, timeout, registryParam, String.class);
     }
 

@@ -256,7 +256,7 @@
 			t.trigger_code = 200
 				AND t.handle_code = 0
 				AND t.trigger_time <![CDATA[ <= ]]> #{losedTime}
-				AND t2.id IS NULL;
+				AND (t2.id IS NULL || t.trigger_time <![CDATA[ < ]]> t2.start_time);
 	</select>
 	<!--
 	SELECT t.id
